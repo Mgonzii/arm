@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--Importing Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    .info {
+      float: right;
+    }
+    #connect {
+      margin-right: 2em;
+    }
+    label.checkbox {
+      margin-right: 1em;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link align-middle px-0" id="polyfill_switcher">
+                          <span class="ms-1 d-none d-sm-inline"></span>
+                        </a>
+                    </li>
+                    <!--*********************JOINT CONFIG****************************-->
+                    <li>
+                      <label for="J1">J1 Length</label>
+                      <input id="J1" type="number" min="0" placeholder="Enter J1 Length..."></input>
+                      <label for="J1f">flip</label>
+                      <input id = "J1f" type="checkbox">
+                    </li>
+                    <li>
+                      <label for="J2">J2 Length</label>
+                      <input id="J2" type="number" min="0" placeholder="Enter J2 Length..."></input>
+                      <label for="J2f">flip</label>
+                      <input id = "J2f" type="checkbox">
+                    </li>
+                    <li>
+                      <label for="J3">J3 Length</label>
+                      <input id="J3" type="number" min="0" placeholder="Enter J3 Length..."></input>
+                      <label for="J3f">flip</label>
+                      <input id = "J3f" type="checkbox">
+                    </li>
+                    <li>
+                      <label for="J4">J4 Length</label>
+                      <input id="J4" type="number" min="0" placeholder="Enter J4 Length..."></input>
+                      <label for="J4f">flip</label>
+                      <input id = "J4f" type="checkbox">
+                    </li>
+                    <li>
+                      <label for="J5">J5 Length</label>
+                      <input id="J5" type="number" min="0" placeholder="Enter J5 Length..."></input>
+                      <label for="J5f">flip</label>
+                      <input id = "J5f" type="checkbox">
+                    </li>
+                    <li>
+                      <label for="J6">J6 Length</label>
+                      <input id="J6" type="number" min="0" placeholder="Enter J6 Length..."></input>
+                      <label for="J6f">flip</label>
+                      <input id = "J6f" type="checkbox">
+                    </li>
+                    <!--**************-->
+                    <script type="module" src="/src/options.ts"></script>
+                    <!--**************-->
+                    <!-------------------------------------------------------->
+                    <li>
+                      <a href="#" class="nav-link align-middle px-0">
+                        <i class="fs-4 bi-house"></i> 
+                        <span class="ms-1 d-none d-sm-inline"><label for="baudrate">Baud rate:</span></label>
+                        <select id="baudrate">
+                          <option value="9600">9600</option>
+                          <option value="14400">14400</option>
+                          <option value="19200">19220</option>
+                          <option value="28800">28800</option>
+                          <option value="38400">38400</option>
+                          <option value="57600">57600</option>
+                          <option value="115200" selected>115200</option>
+                          <option value="230400">230400</option>
+                          <option value="460800">460800</option>
+                          <option value="921600">921600</option>
+                        </select>
+                      </a>
+                    </li> 
+                </ul>
+                <hr>
+            </div>
+        </div>
+        <div class="col py-3">
+          <div class="options">
+            <label for="ports">Port:</label>
+            <select id="ports">
+              <option value="prompt">Click 'Connect' to add a port...</option>
+            </select>
+            <button id="connect">Connect</button>
+            <!--Only shows clear button when in serial NOT WORKING-->
+            <span class="tab-pane fade" id="pills-Serial1" role="tabpanel" aria-labelledby="pills-Serial-tab" tabindex="0">
+              <button id="clear">Clear output</button>
+            </span>
+            <!---->
+          </div>
+          
+
+
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-JJ-tab" data-bs-toggle="pill" data-bs-target="#pills-JJ" type="button" role="tab" aria-controls="pills-JJ" aria-selected="false">Joint Jog</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-Forward-tab" data-bs-toggle="pill" data-bs-target="#pills-Forward" type="button" role="tab" aria-controls="pills-Forward" aria-selected="true">Forward</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-Serial-tab" data-bs-toggle="pill" data-bs-target="#pills-Serial" type="button" role="tab" aria-controls="pills-Serial" aria-selected="false">Serial</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-2D-tab" data-bs-toggle="pill" data-bs-target="#pills-2D" type="button" role="tab" aria-controls="pills-2D" aria-selected="false">2D Inverse</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-3D-tab" data-bs-toggle="pill" data-bs-target="#pills-3D" type="button" role="tab" aria-controls="pills-3D" aria-selected="false">3D Inverse</button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="pills-tabContent">
+            <!--JJ-->
+            <div class="tab-pane fade show active" id="pills-JJ" role="tabpanel" aria-labelledby="pills-JJ-tab" tabindex="0">
+              <label for="J1slide">Joint 1</label>
+              <span>0</span>
+              <input type="range" min="0" max="180" value="90" class="slider" id="J1slide">
+              <span>180 Current val:</span>
+              <span id="value1">90</span>
+              <br>
+              <label for="J2slide">Joint 2</label>
+              <span>0</span>
+              <input type="range" min="0" max="180" value="90" class="slider" id="J2slide">
+              <span>180 Current val:</span>
+              <span id="value2">90</span>
+              <br>
+              <label for="J3slide">Joint 3</label>
+              <span>0</span>
+              <input type="range" min="0" max="180" value="90" class="slider" id="J3slide">
+              <span>180 Current val:</span>
+              <span id="value3">90</span>
+              <br>
+              <label for="J4slide">Joint 4</label>
+              <span>0</span>
+              <input type="range" min="0" max="180" value="90" class="slider" id="J4slide">
+              <span>180 Current val:</span>
+              <span id="value4">90</span>
+              <br>
+              <label for="J5slide">Joint 5</label>
+              <span>0</span>
+              <input type="range" min="0" max="180" value="90" class="slider" id="J5slide">
+              <span>180 Current val:</span>
+              <span id="value5">90</span>
+              <br>
+              <label for="J6slide">Joint 6</label>
+              <span>0</span>
+              <input type="range" min="0" max="180" value="90" class="slider" id="J6slide">
+              <span>180 Current val:</span>
+              <span id="value6">90</span>
+              <br>
+              <span>Slider Vals: </span><span id="sliderValues">90,90,90,90,90,90</span>
+              <script type="module" src="/src/JointJog.ts"></script>
+              
+           </div>
+            <!--Forward-->
+            <div class="tab-pane fade" id="pills-Forward" role="tabpanel" aria-labelledby="pills-Forward-tab" tabindex="1">
+              
+            </div>
+            <!--Serial-->
+            <div class="tab-pane fade" id="pills-Serial" role="tabpanel" aria-labelledby="pills-Serial-tab" tabindex="2">
+              <div><button id="clear">Clear output</button></div>
+              <div id="terminal"></div>
+              <script type="module" src="/src/terminal.ts"></script>
+            </div>
+            <!--2D-->
+            <div class="tab-pane fade" id="pills-2D" role="tabpanel" aria-labelledby="pills-2D-tab" tabindex="3">
+            
+            </div>
+            <!--3D-->
+            <div class="tab-pane fade" id="pills-3D" role="tabpanel" aria-labelledby="pills-3D-tab" tabindex="4">
+
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+</body>
+</html>
+<!--
+<div class="options">
+  <label for="ports">Port:</label>
+  <select id="ports">
+    <option value="prompt">Click 'Connect' to add a port...</option>
+  </select>
+  <button id="connect">Connect</button>
+
+  <button id="download">Download output</button>
+  <button id="clear">Clear output</button>
+
+  <div class="info">
+    <a id="polyfill_switcher"></a>
+  </div>
+
+  <br>
+
+  <label for="baudrate">Baud rate:</label>
+  <select id="baudrate">
+    <option value="9600">9600</option>
+    <option value="14400">14400</option>
+    <option value="19200">19220</option>
+    <option value="28800">28800</option>
+    <option value="38400">38400</option>
+    <option value="57600">57600</option>
+    <option value="115200" selected>115200</option>
+    <option value="230400">230400</option>
+    <option value="460800">460800</option>
+    <option value="921600">921600</option>
+    <option value="custom">Custom</option>
+  </select>
+  <input id="custom_baudrate" type="number" min="1" placeholder="Enter baudrate..." hidden>
+  <label for="databits">Data bits:</label>
+  <select id="databits">
+    <option value="7">7</option>
+    <option value="8" selected>8</option>
+  </select>
+  <label for="parity">Parity:</label>
+  <select id="parity">
+    <option value="none" selected>None</option>
+    <option value="even">Even</option>
+    <option value="odd">Odd</option>
+  </select>
+  <label for="stopbits">Stop bits:</label>
+  <select id="stopbits">
+    <option value="1" selected>1</option>
+    <option value="2">2</option>
+  </select>
+  <input id="rtscts" type="checkbox">
+  <label for="rtscts">Hardware flow control</label>
+
+  <br>
+
+  <input id="echo" type="checkbox">
+  <label class="checkbox" for="echo">Local echo</label>
+  <input id="convert_eol" type="checkbox">
+  <label class="checkbox" for="convert_eol">Convert EOL</label>
+  <input id="autoconnect" type="checkbox">
+  <label class="checkbox" for="autoconnect">Automatically connect</label>
+
+  <div class="info">
+    <a href="https://github.com/GoogleChromeLabs/serial-terminal">Source Code on GitHub</a>
+  </div>
+</div>
+<div id="terminal"></div>
+<script type="module" src="/src/index.ts"></script>
+</body>
+</html>-->
