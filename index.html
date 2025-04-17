@@ -122,9 +122,6 @@
               <button class="nav-link active" id="pills-JJ-tab" data-bs-toggle="pill" data-bs-target="#pills-JJ" type="button" role="tab" aria-controls="pills-JJ" aria-selected="false">Joint Jog</button>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-Forward-tab" data-bs-toggle="pill" data-bs-target="#pills-Forward" type="button" role="tab" aria-controls="pills-Forward" aria-selected="true">Forward</button>
-            </li>
-            <li class="nav-item" role="presentation">
               <button class="nav-link" id="pills-Serial-tab" data-bs-toggle="pill" data-bs-target="#pills-Serial" type="button" role="tab" aria-controls="pills-Serial" aria-selected="false">Serial</button>
             </li>
             <li class="nav-item" role="presentation">
@@ -178,10 +175,6 @@
               <script type="module" src="/src/JointJog.ts"></script>
               
            </div>
-            <!--Forward-->
-            <div class="tab-pane fade" id="pills-Forward" role="tabpanel" aria-labelledby="pills-Forward-tab" tabindex="1">
-              
-            </div>
             <!--Serial-->
             <div class="tab-pane fade" id="pills-Serial" role="tabpanel" aria-labelledby="pills-Serial-tab" tabindex="2">
               <div><button id="clear">Clear output</button></div>
@@ -190,11 +183,44 @@
             </div>
             <!--2D-->
             <div class="tab-pane fade" id="pills-2D" role="tabpanel" aria-labelledby="pills-2D-tab" tabindex="3">
-            
+              <label for="X2D">X Length</label>
+              <input id="X2D" type="number" min="0" placeholder="Enter X2D Length..."></input>
+              <label for="Y2D">Y Length</label>
+              <input id="Y2D" type="number" min="0" placeholder="Enter Y2D Length..."></input>
+              <label for="A2D">Approach angle</label>
+              <input id="A2D" type="number" min="0" placeholder="Enter A2D Length..."></input>
+              <button type="button" id="2DI">Submit</button>
+              <script type="module" src="/src/2Dinv.ts"></script>
             </div>
             <!--3D-->
             <div class="tab-pane fade" id="pills-3D" role="tabpanel" aria-labelledby="pills-3D-tab" tabindex="4">
+              <label for="3DX">X</label>
+              <input type="range" min="-300" max="300" value="150" class="slider" id="3DX">
+              <span id="valX" class="value">0</span>
+              <label for="3DY">Y</label>
+              <input type="range" min="-300" max="300" value="0" class="slider" id="3DY">
+              <span id="valY" class="value">0</span>
+              <label for="3DZ">Z</label>
+              <input type="range" min="-300" max="300" value="70" class="slider" id="3DZ">
+              <span id="valZ" class="value">0</span>
+              <label>
+                r1 (Z1): <input type="range" id="r1" min="0" max="360" value="0">
+                <span id="valR1" class="value">0°</span>
+              </label>
+            
+              <label>
+                r2 (X): <input type="range" id="r2" min="-90" max="90" value="-90">
+                <span id="valR2" class="value">-90°</span>
+              </label>
+            
+              <label>
+                r3 (Z2): <input type="range" id="r3" min="0" max="360" value="0">
+                <span id="valR3" class="value">0°</span>
+              </label>
+            
 
+              <div id="anglesOutput"></div>
+              <script type="module" src="/src/3Dinv.ts"></script>
             </div>
             
         </div>

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@types/w3c-web-serial": "^1.0.3",
+    "kinematics": "^1.0.2",
     "ts-kinematics": "^0.1.4",
     "web-serial-polyfill": "^1.0.14",
     "xterm": "^5.2.1",
